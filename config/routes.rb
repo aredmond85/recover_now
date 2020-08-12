@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :category
-  resources :report
-  resources :responder
-  resources :user
+  resources :categories
+  resources :reports
+  resources :responders
+  resources :users
   get 'about', to: 'pages#about'
 
   root 'pages#home'

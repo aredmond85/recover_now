@@ -1,0 +1,35 @@
+<%= form_with(model: @report, local: true) do |f| %>
+    <div>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+    </div>
+    
+    <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    </div>
+
+    <div>
+    <%= f.label :damage_type %>
+    <%= f.text_field :damage_type %>
+    </div>
+
+    <div>
+    <%= f.label :hero %>
+    <%= f.text_field :hero %>
+    </div>
+    
+    <div>
+    <%= f.label :villain %>
+    <%= f.text_field :villain %>
+    </div>
+
+    <div>
+    <%= f.label :casualties %>
+    <%= f.number_field :casualties %>
+    </div>
+
+    <div>
+    <%= f.submit %>
+    </div>
+<% end %>
