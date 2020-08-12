@@ -1,0 +1,23 @@
+<h1>Responder Index</h1>
+
+<table>
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    </tr>
+</thead>
+
+<tbody>
+<% @responders.each do |responder|%>
+<tr>
+    <td><%= responder.name %><td>
+    <td><%= responder.email %><td>
+    <td><%= link_to "Edit Responder", edit_responder_path(responder) %>
+    <td><%= link_to "Delete Responder", responder_path(responder), method: :delete, data: {confirm: "Are you sure?"} %>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+<%= link_to 'New Responder', new_responder_path %>

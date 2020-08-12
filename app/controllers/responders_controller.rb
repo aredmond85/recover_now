@@ -14,7 +14,7 @@ class RespondersController < ApplicationController
     def create
         @responder = Responder.new(responder_params)
         @responder.save
-        redirect_to report_path
+        redirect_to responders_path
     end
 
     def update
@@ -30,7 +30,7 @@ class RespondersController < ApplicationController
     def destroy
         @responder = Responder.find(params[:id])
         @responder.destroy
-        redirect_to report_path
+        redirect_to responders_path
     end
 
     private
