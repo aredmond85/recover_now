@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     def create
         @category = Category.new(category_params)
         @category.save
-        redirect_to report_path
+        redirect_to categories_path
     end
 
     def update
@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
     def destroy
         @category = Category.find(params[:id])
         @category.destroy
-        redirect_to report_path
+        redirect_to categories_path
     end
 
     private
