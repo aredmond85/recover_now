@@ -1,6 +1,6 @@
 class RespondersController < ApplicationController
     def index
-        @responder = Responder.all
+        @responders = Responder.all
     end
 
     def show
