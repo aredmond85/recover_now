@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_230912) do
+ActiveRecord::Schema.define(version: 2020_08_13_193054) do
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+  create_table "assignees", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "assignee_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "heroes", force: :cascade do |t|
+    t.string "hero_name"
+    t.integer "hero_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "powers", force: :cascade do |t|
+    t.string "power_type"
+    t.integer "power_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -21,26 +38,23 @@ ActiveRecord::Schema.define(version: 2020_08_11_230912) do
   create_table "reports", force: :cascade do |t|
     t.string "subject"
     t.text "description"
-    t.string "damage_type"
-    t.string "hero"
-    t.string "villain"
-    t.integer "casualties"
+    t.string "report_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "responders", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "requesters", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.integer "requester_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "villains", force: :cascade do |t|
+    t.string "villain_name"
+    t.integer "villain_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

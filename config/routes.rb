@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :categories
+  resources :powers
+  resources :villains
+  resources :heroes
+  resources :requesters
+  resources :assignees
   resources :reports
-  resources :responders
-  resources :users
   get 'about', to: 'pages#about'
 
   root 'pages#home'
