@@ -13,8 +13,14 @@ class ReportsController < ApplicationController
     
     def create
         @report = Report.new(report_params)
-        @report.save
-        redirect_to reports_path
+        @report.requester = Requester.first
+        @report.assignee = Assignee.first
+        if @report.save
+            flash[:notice] = "Report was created successfully."
+            redirect_to reports_path
+        else
+            render 'new'
+        end
     end
     
     def update
@@ -40,6 +46,12 @@ class ReportsController < ApplicationController
     end
     
         def report_params
-            params.require(:report).permit(:subject, :description)
+            params.require(:report).permit(
+                :subject, 
+                :description, 
+                hero_ids: [],
+                villain_ids: [],
+                power_ids: []
+            )
         end
 end

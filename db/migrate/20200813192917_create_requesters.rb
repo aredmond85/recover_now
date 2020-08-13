@@ -4,7 +4,6 @@ class CreateRequesters < ActiveRecord::Migration[6.0]
       t.string :username
       t.string :email
       t.string :password_digest
-      t.integer :requester_id
 
       t.timestamps
     end
