@@ -10,27 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_203414) do
+ActiveRecord::Schema.define(version: 2020_08_13_215603) do
 
   create_table "assignees", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.integer "assignee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "heros", force: :cascade do |t|
     t.string "hero_name"
-    t.integer "hero_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "powers", force: :cascade do |t|
     t.string "power_type"
-    t.integer "power_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,23 +35,22 @@ ActiveRecord::Schema.define(version: 2020_08_13_203414) do
   create_table "reports", force: :cascade do |t|
     t.string "subject"
     t.text "description"
-    t.string "report_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "requester_id"
+    t.integer "assignee_id"
   end
 
   create_table "requesters", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.integer "requester_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "villains", force: :cascade do |t|
     t.string "villain_name"
-    t.integer "villain_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
