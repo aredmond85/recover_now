@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  resources :heros
   resources :powers
   resources :villains
-  resources :heroes
   resources :requesters
   resources :assignees
   resources :reports

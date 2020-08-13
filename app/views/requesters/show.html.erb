@@ -1,12 +1,12 @@
 <p>
-  <strong>Name:</strong>
-  <%= @user.username %>
+  <strong>Requester:</strong>
+  <%= @requester.username %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%= @requester.email %>
 </p>
 
-<%= link_to "Edit", edit_user_path(@user)%> |
-<%= link_to 'Back to User Index', users_path %> |
+<%= link_to "Edit", edit_requester_path(@requester)%> |
+<%= link_to 'Back to requester Index', requesters_path %> |

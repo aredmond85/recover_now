@@ -14,7 +14,7 @@ class AssigneesController < ApplicationController
     def create
         @assignee = Assignee.new(assignee_params)
         @assignee.save
-        redirect_to assignee_path
+        redirect_to assignees_path
     end
 
     def update
@@ -30,7 +30,7 @@ class AssigneesController < ApplicationController
     def destroy
         @assignee = Assignee.find(params[:id])
         @assignee.destroy
-        redirect_to assignee_path
+        redirect_to assignees_path
     end
 
     private

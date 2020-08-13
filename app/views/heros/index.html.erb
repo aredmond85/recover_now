@@ -1,0 +1,18 @@
+<h1>Hero Index</h1>
+<table>
+   <thead>
+      <tr>
+         <th>Hero Name</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @heros.each do |hero|%>
+      <tr>
+         <td><%= hero.hero_name %>
+         <td><%= link_to "Edit hero", edit_hero_path(hero) %>
+         <td><%= link_to "Delete hero", hero_path(hero), method: :delete, data: {confirm: "Are you sure?"} %>
+      </tr>
+      <% end %>
+   </tbody>
+</table>
+<%= link_to 'New hero', new_hero_path %>

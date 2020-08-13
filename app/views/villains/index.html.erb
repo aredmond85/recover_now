@@ -1,0 +1,18 @@
+<h1>Villain Index</h1>
+<table>
+   <thead>
+      <tr>
+         <th>Villain Name</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @villains.each do |villain|%>
+      <tr>
+         <td><%= villain.villain_name %>
+         <td><%= link_to "Edit villain", edit_villain_path(villain) %>
+         <td><%= link_to "Delete villain", villain_path(villain), method: :delete, data: {confirm: "Are you sure?"} %>
+      </tr>
+      <% end %>
+   </tbody>
+</table>
+<%= link_to 'New villain', new_villain_path %>

@@ -40,7 +40,7 @@ class RequestersController < ApplicationController
     end
 
         def requester_params
-            params.require(:user).permit(:username, :email, :password_digest)
+            params.require(:requester).permit(:username, :email, :password_digest)
         end
 
 end

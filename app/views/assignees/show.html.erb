@@ -1,12 +1,12 @@
 <p>
-  <strong>Name:</strong>
-  <%= @responder.name %>
+  <strong>Assignee:</strong>
+  <%= @assignee.username %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @responder.email %>
+  <%= @assignee.email %>
 </p>
 
-<%= link_to "Edit", edit_responder_path(@responder)%> |
-<%= link_to 'Back to Responder Index', responders_path %> |
+<%= link_to "Edit", edit_assignee_path(@assignee)%> |
+<%= link_to 'Back to assignee Index', assignees_path %> |

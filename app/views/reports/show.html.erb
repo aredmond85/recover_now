@@ -8,25 +8,5 @@
   <%= @report.description %>
 </p>
 
-<p>
-  <strong>Damage Type:</strong>
-  <%= @report.damage_type %>
-</p>
-
-<p>
-  <strong>Hero:</strong>
-  <%= @report.hero %>
-</p>
-
-<p>
-  <strong>Villain:</strong>
-  <%= @report.villain %>
-</p>
-
-<p>
-  <strong>Casualties:</strong>
-  <%= @report.casualties %>
-</p>
-
 <%= link_to "Edit", edit_report_path(@report)%> |
 <%= link_to 'Back to Report Index', reports_path %> |

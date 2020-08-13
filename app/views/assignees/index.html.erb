@@ -1,23 +1,23 @@
-<h1>Responder Index</h1>
+<h1>Assignee Index</h1>
 
 <table>
 <thead>
 <tr>
-    <th>Name</th>
+    <th>Username</th>
     <th>Email</th>
     </tr>
 </thead>
 
 <tbody>
-<% @responders.each do |responder|%>
+<% @assignees.each do |assignee|%>
 <tr>s
-    <td><%= responder.name %><td>
-    <td><%= responder.email %><td>
-    <td><%= link_to "Edit Responder", edit_responder_path(responder) %>
-    <td><%= link_to "Delete Responder", responder_path(responder), method: :delete, data: {confirm: "Are you sure?"} %>
+    <td><%= assignee.username %><td>
+    <td><%= assignee.email %><td>
+    <td><%= link_to "Edit assignee", edit_assignee_path(assignee) %>
+    <td><%= link_to "Delete assignee", assignee_path(assignee), method: :delete, data: {confirm: "Are you sure?"} %>
 </tr>
 <% end %>
 </tbody>
 </table>
 
-<%= link_to 'New Responder', new_responder_path %>
+<%= link_to 'New assignee', new_assignee_path %>

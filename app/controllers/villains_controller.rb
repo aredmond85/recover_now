@@ -14,7 +14,7 @@ class VillainsController < ApplicationController
     def create
         @villain = Villain.new(villain_params)
         @villain.save
-        redirect_to villain_path
+        redirect_to villains_path
     end
 
     def update
@@ -30,7 +30,7 @@ class VillainsController < ApplicationController
     def destroy
         @villain = Villain.find(params[:id])
         @villain.destroy
-        redirect_to villain_path
+        redirect_to villains_path
     end
 
     private
