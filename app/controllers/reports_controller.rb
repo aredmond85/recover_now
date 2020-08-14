@@ -49,9 +49,6 @@ class ReportsController < ApplicationController
             params.require(:report).permit(
                 :subject, 
                 :description, 
-                hero_ids: [],
-                villain_ids: [],
-                power_ids: []
             )
         end
 end
