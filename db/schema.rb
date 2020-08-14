@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_215603) do
+ActiveRecord::Schema.define(version: 2020_08_14_195839) do
 
   create_table "assignees", force: :cascade do |t|
     t.string "username"
@@ -24,12 +24,14 @@ ActiveRecord::Schema.define(version: 2020_08_13_215603) do
     t.string "hero_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "report_id"
   end
 
   create_table "powers", force: :cascade do |t|
     t.string "power_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "report_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_215603) do
     t.string "villain_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "report_id"
   end
 
 end
