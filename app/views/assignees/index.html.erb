@@ -1,23 +1,23 @@
 <h1>Assignee Index</h1>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
 
-<table>
-<thead>
-<tr>
-    <th>Username</th>
-    <th>Email</th>
-    </tr>
-</thead>
-
-<tbody>
-<% @assignees.each do |assignee|%>
-<tr>
-    <td><%= assignee.username %><td>
-    <td><%= assignee.email %><td>
-    <td><%= link_to "Edit assignee", edit_assignee_path(assignee) %>
-    <td><%= link_to "Delete assignee", assignee_path(assignee), method: :delete, data: {confirm: "Are you sure?"} %>
-</tr>
-<% end %>
-</tbody>
-</table>
-
+        <tbody>
+            <% @assignees.each do |assignee|%>
+            <tr >
+                <td><%= assignee.username %><td>
+                <td><%= assignee.email %><td>
+                <td><%= link_to "Edit assignee", edit_assignee_path(assignee) %>
+                <td><%= link_to "Delete assignee", assignee_path(assignee), method: :delete, data: {confirm: "Are you sure?"} %>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
 <%= link_to 'New assignee', new_assignee_path %>
