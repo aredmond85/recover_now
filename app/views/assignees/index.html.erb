@@ -1,20 +1,23 @@
 <h1>Assignee Index</h1>
 <div class="container">
-    <table>
-        <thead>
+    <table class="table table-bordered bg-light">
+         <thead bgcolor="#959595">  
             <tr>
-                <th>Username</th>
-                <th>Email</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                
             </tr>
         </thead>
 
         <tbody>
             <% @assignees.each do |assignee|%>
-            <tr >
-                <td><%= assignee.username %><td>
-                <td><%= assignee.email %><td>
-                <td><%= link_to "Edit assignee", edit_assignee_path(assignee) %>
-                <td><%= link_to "Delete assignee", assignee_path(assignee), method: :delete, data: {confirm: "Are you sure?"} %>
+            <tr>
+                <td class="active"><%= assignee.username %></td>
+                <td><%= assignee.email %></td>
+                <td><%= link_to "Edit assignee", edit_assignee_path(assignee) %> </td>
+                <td><%= link_to "Delete assignee", assignee_path(assignee), method: :delete, data: {confirm: "Are you sure?"} %> </td>
             </tr>
             <% end %>
         </tbody>
