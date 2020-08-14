@@ -1,8 +1,11 @@
 <h1>Hero Index</h1>
-<table>
-   <thead>
-      <tr>
-         <th>Hero Name</th>
+<div class="container">
+    <table class="table table-bordered bg-light">
+         <thead bgcolor="#959595">  
+            <tr>
+         <th scope="col">Hero Name</th>
+                         <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
       </tr>
    </thead>
    <tbody>
@@ -15,4 +18,5 @@
       <% end %>
    </tbody>
 </table>
+</div>
 <%= link_to 'New hero', new_hero_path %>

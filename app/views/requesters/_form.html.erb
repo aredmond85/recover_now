@@ -1,6 +1,14 @@
+<div class="container">
+<div class="row justify-content-center">
+   <div class="col-5">
 <%= simple_form_for @requester do |f| %>
   <%= f.input :username %>
   <%= f.input :email %>
   <%= f.input :password_digest %>
-  <%= f.button :submit %>
+      <%= f.button :submit, class: "btn-primary" %>
+      <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
+      <%= button_to "Back", requesters_path, class: "btn btn-outline-secondary"%>
 <% end %>
+     </div>
+   </div>
+</div>

@@ -1,5 +1,22 @@
-<%= simple_form_for @report do |f| %>
-  <%= f.input :subject %>
-  <%= f.input :description %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+   <div class="row justify-content-center">
+      <div class="col-5">
+         <%= simple_form_for @report do |f| %>
+         <%= f.input :subject %>
+         <%= f.input :description %>
+         <%= f.simple_fields_for :villains do |v| %>
+            <%= v.input :villain_name %>
+         <% end %>
+         <%= f.simple_fields_for :heros do |h| %>
+            <%= h.input :hero_name %>
+         <% end %>
+         <%= f.simple_fields_for :powers do |p| %>
+            <%= p.input :power_type %>
+         <% end %>
+         <%= f.button :submit, class: "btn-primary" %>
+         <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
+         <%= button_to "Back", reports_path, class: "btn btn-outline-secondary"%>
+         <% end %>
+      </div>
+   </div>
+</div>

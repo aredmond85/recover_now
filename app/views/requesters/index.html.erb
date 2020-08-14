@@ -1,10 +1,12 @@
 <h1>Requester Index</h1>
-
-<table>
-<thead>
+<div class="container">
+    <table class="table table-bordered bg-light">
+         <thead bgcolor="#959595">  
 <tr>
-    <th>Username</th>
-    <th>Email</th>
+    <th scope="col">Username</th>
+    <th scope="col">Email</th>
+    <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
     </tr>
 </thead>
 
@@ -19,5 +21,6 @@
 <% end %>
 </tbody>
 </table>
+</div>
 
 <%= link_to 'New requester', new_requester_path %>

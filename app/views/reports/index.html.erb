@@ -1,20 +1,36 @@
+<div class="container">
 <h1>Report Index</h1>
-<table>
-   <thead>
-      <tr>
-         <th>Subject</th>
-         <th>Description</th>
-      </tr>
-   </thead>
-   <tbody>
-      <% @reports.each do |report|%>
-      <tr>
-         <td><%= report.subject %>
-         <td><%= report.description %>
-         <td><%= link_to "Edit Report", edit_report_path(report) %>
-         <td><%= link_to "Delete Report", report_path(report), method: :delete, data: {confirm: "Are you sure?"} %>
-      </tr>
-      <% end %>
-   </tbody>
-</table>
+   <table class="table table-bordered bg-light">
+      <thead bgcolor="#959595">
+         <tr>
+            <th scope="col">Subject</th>
+            <th scope="col">Description</th>
+            <th scope="col">Villain</th>
+            <th scope="col">Hero</th>
+            <th scope="col">Power</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% @reports.each do |report|%>
+         <tr>
+            <td><%= report.subject %></td>
+            <td><%= report.description %></td>
+            <% report.villains.each do |v| %>
+            <td><%= v.villain_name %></td>
+            <% end %>
+            <% report.heros.each do |h| %>
+            <td><%= h.hero_name %></td>
+            <% end %>
+            <% report.powers.each do |p| %>
+            <td><%= p.power_type %></td>
+            <% end %>
+            <td><%= link_to "Edit Report", edit_report_path(report) %></td>
+            <td><%= link_to "Delete Report", report_path(report), method: :delete, data: {confirm: "Are you sure?"} %></td>
+         </tr>
+         <% end %>
+      </tbody>
+   </table>
+</div>
 <%= link_to 'New Report', new_report_path %>

@@ -1,8 +1,11 @@
 <h1>Villain Index</h1>
-<table>
-   <thead>
+<div class="container">
+    <table class="table table-bordered bg-light">
+         <thead bgcolor="#959595">  
       <tr>
-         <th>Villain Name</th>
+         <th scope="col">Villain Name</th>
+         <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
       </tr>
    </thead>
    <tbody>
@@ -15,4 +18,5 @@
       <% end %>
    </tbody>
 </table>
+</div>
 <%= link_to 'New villain', new_villain_path %>
