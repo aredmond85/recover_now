@@ -9,6 +9,9 @@ class ReportsController < ApplicationController
     
     def new
         @report = Report.new
+        @report.villains.build
+        @report.heros.build
+        @report.powers.build
     end
     
     def create
@@ -46,9 +49,6 @@ class ReportsController < ApplicationController
     end
     
         def report_params
-            params.require(:report).permit(
-                :subject, 
-                :description, 
-            )
+            params.require(:report).permit(:subject,:description, villains_attributes: [:id, :villain_name], heros_attributes: [:id, :hero_name], powers_attributes: [:id, :power_name])
         end
 end
