@@ -1,2 +1,11 @@
-<h1>Recover Now</h1>
-<%= link_to "Sign up!" %>
+<div class="container" id="home-container">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Recover Now</h1>
+        <hr class="my-4">
+        <p class="lead">
+        <div class="btn-group" role="group" >
+            <%= button_to "Sign up", heros_path, class: "btn btn-primary mr-4" %>
+            <%= button_to "Login", villains_path, class: "btn btn-primary mr-4" %>
+        </div>
+    </div>
+</div>
