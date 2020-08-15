@@ -1,22 +1,45 @@
 <div class="container">
    <div class="row justify-content-center">
-      <div class="col-5">
-         <%= simple_form_for @report do |f| %>
-         <%= f.input :subject %>
-         <%= f.input :description %>
-         <%= f.simple_fields_for :villains do |v| %>
-            <%= v.input :villain_name %>
+      <div class="col-10">
+         <%= form_with(model: @report, class: "shadow p-3 mb-3 bg-dark rounded", local: true) do |f| %>
+
+         <div class="form-group row">
+            <%= f.label :subject, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+               <%= f.text_field :subject, class: "form-control shadow rounded", placeholder: "Subject of Report" %>
+            </div>
+         </div>
+         
+         <div class="form-group row">
+            <%= f.label :description, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+               <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of Issue" %>
+            </div>
+         </div>
+
+         <%# <div class="form-group row"> %>
+            <%# <%= f.label :villain, class: "col-2 col-form-label text-light" %>
+            <%# <div class="col-10"> %>
+               <%# <%= f.collection_select(:villain_ids, Villain.all, :id, :villain_name, %>
+                  <%# {multiple: true, size: 2, class: "custom-select shadow rounded" })%>
+            <%# </div> %>
+         <%# </div> %>
+
+         <div class="form-group row">
+            <%= f.label :hero, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+               <%= f.collection_select(:hero_ids, Hero.all, :id, :hero_name,
+                  {multiple: true, size: 2, class: "custom-select shadow rounded" })%>
+            </div>
+         </div>
+
+         <div class="btn-toolbar p-2 mb-2 row justify-content-center">
+            <%= f.submit class: "btn btn-primary" %>
+         </div>
          <% end %>
-         <%= f.simple_fields_for :heros do |h| %>
-            <%= h.input :hero_name %>
-         <% end %>
-         <%= f.simple_fields_for :powers do |p| %>
-            <%= p.input :power_type %>
-         <% end %>
-         <%= f.button :submit, class: "btn-primary" %>
-         <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
-         <%= button_to "Back", reports_path, class: "btn btn-outline-secondary"%>
-         <% end %>
+      </div>
+      <div class="mb-3">
+            <%= link_to '[ Cancel and return to reports listing ]', reports_path, class: "text-info" %>
       </div>
    </div>
 </div>

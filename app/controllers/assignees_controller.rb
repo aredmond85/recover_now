@@ -14,7 +14,7 @@ class AssigneesController < ApplicationController
     def create
         @assignee = Assignee.new(assignee_params)
         @assignee.save
-        redirect_to assignees_path
+        redirect_to @assignee
     end
 
     def update

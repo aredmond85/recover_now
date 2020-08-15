@@ -5,11 +5,9 @@ class Report < ApplicationRecord
    belongs_to :requester
    belongs_to :assignee
 
-   has_many :villains	
-   has_many :heros	
-   has_many :powers
+   has_many :report_heros
+   has_many :heros, through: :report_heros
 
-   accepts_nested_attributes_for :villains
-   accepts_nested_attributes_for :heros
-   accepts_nested_attributes_for :powers
+   # has_many :report_villains
+   # has_many :villains, through: :report_villains
 end

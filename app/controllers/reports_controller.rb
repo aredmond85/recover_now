@@ -9,9 +9,6 @@ class ReportsController < ApplicationController
     
     def new
         @report = Report.new
-        @report.villains.build
-        @report.heros.build
-        @report.powers.build
     end
     
     def create
@@ -20,7 +17,7 @@ class ReportsController < ApplicationController
         @report.assignee = Assignee.first
         if @report.save
             flash[:notice] = "Report was created successfully."
-            redirect_to reports_path
+            redirect_to @report
         else
             render 'new'
         end
@@ -49,6 +46,6 @@ class ReportsController < ApplicationController
     end
     
         def report_params
-            params.require(:report).permit(:subject,:description, villains_attributes: [:id, :villain_name], heros_attributes: [:id, :hero_name], powers_attributes: [:id, :power_name])
+            params.require(:report).permit(:subject, :description, hero_ids: [], hero_ids: [], villain_ids: [])
         end
 end

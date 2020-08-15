@@ -20,7 +20,7 @@ class RequestersController < ApplicationController
     def update
         @requester = Requester.find(params[:id])
         @requester.update(requester_params)
-        redirect_to requesters_path
+        redirect_to @requester
     end
 
     def edit
