@@ -1,26 +1,24 @@
-<h1>Requester Index</h1>
 <div class="container">
-    <table class="table table-bordered bg-light">
-         <thead bgcolor="#959595">  
-<tr>
-    <th scope="col">Username</th>
-    <th scope="col">Email</th>
-    <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-    </tr>
-</thead>
-
-<tbody>
-<% @requesters.each do |requester|%>
-<tr>
-    <td><%= requester.username %><td>
-    <td><%= requester.email %><td>
-    <td><%= link_to "Edit requester", edit_requester_path(requester) %>
-    <td><%= link_to "Delete requester", requester_path(requester), method: :delete, data: {confirm: "Are you sure?"} %>
-</tr>
-<% end %>
-</tbody>
-</table>
+   <h1 class="row justify-content-center">Requester Index</h1>
+   <table class="table table-bordered bg-light">
+      <thead bgcolor="#959595">
+         <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% @requesters.each do |requester|%>
+         <tr>
+            <td><%= requester.username %></td>
+            <td><%= requester.email %></td>
+            <td><%= link_to "Edit requester", edit_requester_path(requester) %></td>
+            <td><%= link_to "Delete requester", requester_path(requester), method: :delete, data: {confirm: "Are you sure?"} %></td>
+         </tr>
+         <% end %>
+      </tbody>
+   </table>
+   <%= link_to 'New Requester', new_requester_path, class: "btn btn-primary" %>
 </div>
-
-<%= link_to 'New requester', new_requester_path %>
