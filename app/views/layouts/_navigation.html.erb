@@ -11,23 +11,25 @@
          <li class="nav-item">
             <%= link_to "Villains", villains_path, class: "nav-link"%>
          </li>
-        <li class="nav-item">
-        <%= link_to "Powers", powers_path, class: "nav-link"%>
-        </li>
-        <li class="nav-item">
-        <%= link_to "Assignees", assignees_path, class: "nav-link"%>
-        </li>
-        <li class="nav-item">
-        <%= link_to "Requesters", requesters_path, class: "nav-link"%>
-        </li>
-        <li class="nav-item">
+         <li class="nav-item">
+            <%= link_to "Powers", powers_path, class: "nav-link"%>
+         </li>
+         <li class="nav-item">
+            <%= link_to "Assignees", assignees_path, class: "nav-link"%>
+         </li>
+         <li class="nav-item">
             <%= link_to "Reports", reports_path, class: "nav-link"%>
-        </li>
+         </li>
+         <% if requester_signed_in? %>
+         <li class="nav-item">
+            <%= link_to "Logout", destroy_requester_session_path, method: :delete, class: "nav-link"%>
+         </li>
+          <% end %>
          </li>
       </ul>
       <%# <form class="form-inline my-2 my-lg-0">
          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> %>
+         </form> %>
    </div>
 </nav>

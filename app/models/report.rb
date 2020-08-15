@@ -3,7 +3,7 @@ class Report < ApplicationRecord
    validates :description, presence: true, length: { minimum: 10, maximum: 300 }
 
    belongs_to :requester
-   belongs_to :assignee
+   # belongs_to :assignee
 
    has_many :report_heros
    has_many :heros, through: :report_heros

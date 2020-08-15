@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+    before_action :authenticate_requester!, except: [:index, :show]
+    
     def index
         @reports = Report.all
     end
@@ -8,13 +10,11 @@ class ReportsController < ApplicationController
     end
     
     def new
-        @report = Report.new
+        @report = current_requester.reports.new
     end
     
     def create
-        @report = Report.new(report_params)
-        @report.requester = Requester.first
-        @report.assignee = Assignee.first
+        @report = current_requester.reports.new(report_params)
         if @report.save
             flash[:notice] = "Report was created successfully."
             redirect_to @report

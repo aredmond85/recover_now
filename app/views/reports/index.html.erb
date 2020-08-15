@@ -5,7 +5,8 @@
          <tr>
             <th scope="col">Subject</th>
             <th scope="col">Description</th>
-            <th scope="col">Hero</th>
+            <th scope="col">Created By</th>
+            <th scope="col">Hero(s) Involved</th>
             <%# <th scope="col">Villain</th> %>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -16,14 +17,17 @@
          <tr>
             <td><%= report.subject %></td>
             <td><%= report.description %></td>
+            <td><%= report.requester.email %></td>
             <% report.heros.each do |h| %>
             <td><%= h.hero_name %></td>
             <% end %>
             <%# <% report.villains.each do |v| %>
             <%# <td><%= v.villain_name %></td>
             <%# <% end %>
+            <% if report.requester == current_requester %>
             <td><%= link_to "Edit Report", edit_report_path(report) %></td>
             <td><%= link_to "Delete Report", report_path(report), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            <% end %>
          </tr>
          <% end %>
       </tbody>

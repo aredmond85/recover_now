@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_215440) do
+ActiveRecord::Schema.define(version: 2020_08_15_222248) do
 
   create_table "assignees", force: :cascade do |t|
     t.string "username"
@@ -37,11 +37,6 @@ ActiveRecord::Schema.define(version: 2020_08_15_215440) do
     t.integer "hero_id"
   end
 
-  create_table "report_villains", force: :cascade do |t|
-    t.integer "report_id"
-    t.integer "villain_id"
-  end
-
   create_table "reports", force: :cascade do |t|
     t.string "subject"
     t.text "description"
@@ -52,11 +47,15 @@ ActiveRecord::Schema.define(version: 2020_08_15_215440) do
   end
 
   create_table "requesters", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_requesters_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_requesters_on_reset_password_token", unique: true
   end
 
   create_table "villains", force: :cascade do |t|
