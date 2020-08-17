@@ -4,8 +4,13 @@
         <hr class="my-4">
         <p class="lead">
         <div class="btn-group" role="group" >
+        <% if !requester_signed_in? %>
             <%= link_to "Sign up", new_requester_registration_path, class: "btn btn-primary mr-4" %>
             <%= link_to "Login", new_requester_session_path, class: "btn btn-primary mr-4" %>
+        <% end %>
+        <% if requester_signed_in? %>
+            <%= link_to "Go to your reports", reports_path, class: "btn btn-primary mr-4" %>
+        <% end %>
         </div>
     </div>
 </div>
