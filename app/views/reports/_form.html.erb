@@ -28,6 +28,12 @@
                <%= f.collection_select(:hero_ids, Hero.all, :id, :hero_name, {prompt: "Select a Hero"}, {:required => true}) %>
             </div>
          </div>
+         <div class="form-group row">
+            <%= f.label :villain, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+               <%= f.collection_select(:villain_ids, Villain.all, :id, :villain_name, {prompt: "Select a Villain"}, {:required => true}) %>
+            </div>
+         </div>
          <div class="btn-toolbar p-2 mb-2 row justify-content-center">
             <%= f.submit class: "btn btn-primary" %>
          </div>

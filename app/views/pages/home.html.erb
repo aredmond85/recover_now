@@ -6,12 +6,12 @@
         <div class="btn-group" role="group" >
         <% if !user_signed_in? %>
             <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary mr-4" %>
-            <%= link_to "Login", new_user_session_path, class: "btn btn-primary mr-4" %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-primary mr-4" %><br>
+            <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary mr-4" %>
         <% end %>
         <% if user_signed_in? %>
             <%= link_to "Go to your reports", reports_path, class: "btn btn-primary btn-lg mr-4" %>
         <% end %>
         </div>
     </div>
-    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary btn-lg mr-4" %>
 </div>

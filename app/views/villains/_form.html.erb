@@ -1,0 +1,20 @@
+<div class="container">
+   <div class="row justify-content-center">
+      <div class="col-5">
+         <% if @villain.errors.any? %>
+         <h2>The following errors prevented the article from being saved</h2>
+         <ul>
+            <% @villain.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+         </ul>
+         <% end %>
+         <%= simple_form_for @villain do |f| %>
+         <%= f.input :villain_name %>
+         <%= f.button :submit, class: "btn-primary" %>
+         <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
+         <%= button_to "Back", villains_path, class: "btn btn-outline-secondary"%>
+         <% end %>
+      </div>
+   </div>
+</div>

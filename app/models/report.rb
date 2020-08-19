@@ -4,8 +4,7 @@ class Report < ApplicationRecord
 
    belongs_to :user
    has_and_belongs_to_many :heros, :join_table => 'report_heros'
-   
-   # def hero_id=(hero_id)
-   #  self.hero_ids = [hero_id]
-   # end
+
+   belongs_to :user
+   has_and_belongs_to_many :villain, :join_table => 'report_villains'
 end

@@ -52,7 +52,7 @@ class ReportsController < ApplicationController
     
     def report_params
         #byebug
-        params.require(:report).permit(:subject, :description, :hero_ids)
+        params.require(:report).permit(:subject, :description, :hero_ids, :villain_ids)
     end
 
     def require_login

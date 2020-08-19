@@ -26,7 +26,7 @@ class HerosController < ApplicationController
 
     def update
         @hero = Hero.find(params[:id])
-        if @category.update(category_params)
+        if @hero.update(hero_params)
             flash[:notice] = "Hero name updated successfully"
             redirect_to @hero
         else

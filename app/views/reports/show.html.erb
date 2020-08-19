@@ -9,10 +9,17 @@
 </p>
 
 <p>
-  <%# <strong>Villains:</strong> %>
-  <%# <% @report.villains.each do |v| %>
-  <%# <%= v.villain_name %>
-  <%# <% end %>
+  <strong>Hero:</strong>
+  <% @report.heros.each do |h| %>
+  <%= h.hero_name %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Villain:</strong>
+  <% @report.villain.each do |v| %>
+  <%= v.villain_name %>
+  <% end %>
 </p>
 
 <%= link_to "Edit", edit_report_path(@report)%> |
