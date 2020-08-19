@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :require_login
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!
 
     def index
         @users = User.all

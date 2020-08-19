@@ -11,9 +11,9 @@
       <tbody>
          <% @heros.each do |hero|%>
          <tr>
-            <td><%= hero.hero_name %>
-            <td><%= link_to "Edit hero", edit_hero_path(hero) %>
-            <td><%= link_to "Delete hero", hero_path(hero), method: :delete, data: {confirm: "Are you sure?"} %>
+            <td><%= hero.hero_name %></td>
+            <td><%= link_to "Edit hero", edit_hero_path(hero) %></td>
+            <td><%= link_to "Delete hero", hero_path(hero), method: :delete, data: {confirm: "Are you sure?"} %></td>
          </tr>
          <% end %>
       </tbody>

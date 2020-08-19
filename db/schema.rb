@@ -18,11 +18,9 @@ ActiveRecord::Schema.define(version: 2020_08_18_222532) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "report_heros", id: false, force: :cascade do |t|
+  create_table "report_heros", force: :cascade do |t|
     t.integer "report_id"
     t.integer "hero_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reports", force: :cascade do |t|
@@ -46,6 +44,4 @@ ActiveRecord::Schema.define(version: 2020_08_18_222532) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "report_heros", "heros"
-  add_foreign_key "report_heros", "reports"
 end
