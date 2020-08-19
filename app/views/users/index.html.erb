@@ -1,0 +1,23 @@
+<div class="container">
+   <h1 class="row justify-content-center">User Index</h1>
+   <table class="table table-bordered bg-light">
+      <thead bgcolor="#959595">
+         <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% @users.each do |user|%>
+         <tr>
+            <td><%= user.email %></td>
+            <td><%= link_to "Edit user", edit_user_path(user) %></td>
+            <td><%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure?"} %></td>
+         </tr>
+         <% end %>
+      </tbody>
+   </table>
+   <%= link_to 'New user', new_user_path, class: "btn btn-primary" %>
+</div>

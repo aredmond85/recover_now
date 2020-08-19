@@ -1,4 +1,7 @@
 class HerosController < ApplicationController
+    before_action :require_login
+    before_action :authenticate_user!, except: [:index, :show]
+
     def index
         @heros = Hero.all
     end
@@ -13,14 +16,22 @@ class HerosController < ApplicationController
 
     def create
         @hero = Hero.new(hero_params)
-        @hero.save
-        redirect_to heros_path
+        if @hero.save
+            flash[:notice] = "Hero was successfully created"
+            redirect_to @hero
+        else
+            render 'new'
+        end
     end
 
     def update
         @hero = Hero.find(params[:id])
-        @hero.update(hero_params)
-        redirect_to @hero
+        if @category.update(category_params)
+            flash[:notice] = "Hero name updated successfully"
+            redirect_to @hero
+        else
+            render 'edit'
+        end
     end
 
     def edit
@@ -39,7 +50,14 @@ class HerosController < ApplicationController
         @hero = Hero.find(params[:id])
     end
 
-        def hero_params
-            params.require(:hero).permit(:hero_name)
+    def hero_params
+        params.require(:hero).permit(:hero_name)
+    end
+
+    def require_login
+        unless user_signed_in?
+            flash[:error] = "You must be logged in to access this section"
+            redirect_to root_path # halts request cycle
         end
+    end
 end

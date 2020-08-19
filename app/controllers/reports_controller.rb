@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
-    before_action :authenticate_requester!, except: [:index, :show]
+    before_action :require_login
+    before_action :authenticate_user!, except: [:index, :show]
     
     def index
         @reports = Report.all
@@ -10,11 +11,11 @@ class ReportsController < ApplicationController
     end
     
     def new
-        @report = current_requester.reports.new
+        @report = current_user.reports.new
     end
     
     def create
-        @report = current_requester.reports.new(report_params)
+        @report = current_user.reports.new(report_params)
         if @report.save
             flash[:notice] = "Report was created successfully."
             redirect_to @report
@@ -25,8 +26,12 @@ class ReportsController < ApplicationController
     
     def update
         @report = Report.find(params[:id])
-        @report.update(report_params)
-        redirect_to @report
+        if @report.update(report_params)
+            flash[:notice] = "Report updated successfully"
+            redirect_to @report
+        else
+            render 'edit'
+        end
     end
     
     def edit
@@ -45,7 +50,15 @@ class ReportsController < ApplicationController
         @report = Report.find(params[:id])
     end
     
-        def report_params
-            params.require(:report).permit(:subject, :description, hero_ids: [], hero_ids: [], villain_ids: [])
+    def report_params
+        #byebug
+        params.require(:report).permit(:subject, :description, :hero_ids)
+    end
+
+    def require_login
+        unless user_signed_in?
+          flash[:error] = "You must be logged in to access this section"
+          redirect_to root_path
         end
+    end
 end
