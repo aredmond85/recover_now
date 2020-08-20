@@ -17,11 +17,11 @@
          <tr>
             <td><%= report.subject %></td>
             <td><%= report.description %></td>
-            <td><%= report.user.email %></td>
+            <td><%= link_to report.user.email, report_path(report) %></td>
             <% report.heros.each do |hero|%>
-            <td><%= hero.hero_name %></td>
+            <td><%= link_to hero.hero_name, report_heros_path(:hero_id, :report_id)  %></td>
             <% end %>
-            <% report.villain.each do |villain|%>
+            <% report.villains.each do |villain|%>
             <td><%= villain.villain_name %></td>
             <% end %>
             <% if report.user == current_user %>

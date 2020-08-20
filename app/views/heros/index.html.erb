@@ -4,19 +4,14 @@
       <thead bgcolor="#959595">
          <tr>
             <th scope="col">Hero Name</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
          </tr>
       </thead>
       <tbody>
          <% @heros.each do |hero|%>
          <tr>
             <td><%= hero.hero_name %></td>
-            <td><%= link_to "Edit hero", edit_hero_path(hero) %></td>
-            <td><%= link_to "Delete hero", hero_path(hero), method: :delete, data: {confirm: "Are you sure?"} %></td>
          </tr>
          <% end %>
       </tbody>
    </table>
-   <%= link_to 'New Hero', new_hero_path, class: "btn btn-primary" %>
 </div>

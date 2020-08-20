@@ -1,12 +1,17 @@
-<p>
-  <strong>User:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to "Edit", edit_user_path(@user)%> |
-<%= link_to 'Back to user Index', users_path %> |
+<div class="container">
+   <h1 class="row justify-content-center">Show User</h1>
+   <table class="table table-bordered bg-light">
+      <thead bgcolor="#959595">
+         <tr>
+            <th scope="col">Email</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td><%= @user.email %></td>
+         </tr>
+      </tbody>
+   </table>
+   <%= link_to "Edit User", edit_user_path(@user), class: "btn btn-primary mr-4" %>
+   <%= link_to 'Reports', reports_path, class: "btn btn-outline-secondary mr-4" %>
+</div>

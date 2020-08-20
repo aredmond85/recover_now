@@ -1,7 +1,17 @@
-<p>
-  <strong>Hero Name:</strong>
-  <%= @hero.hero_name %>
-</p>
-
-<%= link_to "Edit", edit_hero_path(@hero)%> |
-<%= link_to 'Back to hero Index', heros_path %> |
+<div class="container">
+   <h1 class="row justify-content-center">Show Hero</h1>
+   <table class="table table-bordered bg-light">
+      <thead bgcolor="#959595">
+         <tr>
+            <th scope="col">Hero</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td><%= @hero.hero_name %></td>
+         </tr>
+      </tbody>
+   </table>
+   <%= link_to "Edit Hero", edit_hero_path(@hero), class: "btn btn-primary mr-4" %>
+   <%= link_to 'Reports', reports_path, class: "btn btn-outline-secondary mr-4" %>
+</div>
