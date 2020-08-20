@@ -3,7 +3,6 @@ class HerosController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
-        byebug
         if params[:report_id]
             @report = Report.find_by(id: params[:report_id])
             if @report.nil?
@@ -33,7 +32,15 @@ class HerosController < ApplicationController
         @hero = Hero.new
     end
 
-
+    def create
+        @hero = Hero.new(hero_params)
+        if @hero.save
+            flash[:notice] = "Hero was successfully created"
+            redirect_to @hero
+        else
+            render 'new'
+        end
+    end
 
     def update
         @hero = Hero.find(params[:id])
