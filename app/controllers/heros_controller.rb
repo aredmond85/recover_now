@@ -3,26 +3,36 @@ class HerosController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
-        @heros = Hero.all
+        if params[:report_id]
+            @report = Report.find_by(id: params[:report_id])
+            if @report.nil?
+                redirect_to reports_path, alert: "Report not found"
+            else
+                @heros = @reports.heros
+            end
+        else
+            @heros = Hero.all
+        end
     end
 
     def show
-        @hero = Hero.find(params[:id])
+        if params[:report_id]
+            @report = Report.find_by(id: params[:report_id])
+            @hero = @report.heros.find_by(id: params[:id])
+                if @hero.nil?
+                    flash[:notice] = "Hero not found"
+                    redirect_to report_hero_path(@report)
+                end
+        else
+            @hero = Hero.find(params[:id])
+        end
     end
     
     def new
         @hero = Hero.new
     end
 
-    def create
-        @hero = Hero.new(hero_params)
-        if @hero.save
-            flash[:notice] = "Hero was successfully created"
-            redirect_to @hero
-        else
-            render 'new'
-        end
-    end
+
 
     def update
         @hero = Hero.find(params[:id])
