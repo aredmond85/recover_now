@@ -1,0 +1,28 @@
+<div class="container">
+   <h1 class="row justify-content-center">List of Villain Bios</h1>
+   <table class="table table-bordered bg-light">
+      <thead bgcolor="#959595">
+         <tr>
+            <th scope="col">Villain Summary</th>
+            <th scope="col">Villain Power</th>
+            <th scope="col">Villain Name</th>
+            <th scope="col">Select</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% @villainbios.each do |bio|%>
+         <tr>
+            <td><%= bio.villain_summary %></td>
+            <td><%= bio.villain_powers %></td>
+            <td><%= bio.villain.villain_name %></td>
+            <td><%= link_to "Select Bio", villain_bio_path(bio) %></td>
+            <td><%= link_to "Edit Bio", edit_villain_bio_path(bio) %></td>
+            <td><%= link_to "Delete Bio", villain_bio_path(bio), method: :delete, data: {confirm: "Are you sure?"} %></td>
+         </tr>
+         <% end %>
+      </tbody>
+   </table>
+   <%= link_to 'New Bio', new_villain_bio_path, class: "btn btn-primary" %>
+</div>

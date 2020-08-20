@@ -1,0 +1,40 @@
+<div class="container">
+   <div class="row justify-content-center">
+      <div class="col-10">
+         <% if @herobio.errors.any? %>
+         <h2>The following errors prevented the article from being saved</h2>
+         <ul>
+            <% @herobio.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+         </ul>
+         <% end %>
+         <%= form_with(model: @herobio, class: "shadow p-3 mb-3 bg-dark rounded", local: true) do |f| %>
+         <div class="form-group row">
+            <%= f.label :hero_summary, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+               <%= f.text_area :hero_summary, rows: 10, class: "form-control shadow rounded", placeholder: "Hero Summary" %>
+            </div>
+         </div>
+         <div class="form-group row">
+            <%= f.label :hero_powers, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+               <%= f.text_area :hero_powers, rows: 10, class: "form-control shadow rounded", placeholder: "Please list 1 power on each line" %>
+            </div>
+         </div>
+         <div class="form-group row">
+            <%= f.label :hero, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+               <%= f.collection_select(:hero_id, Hero.all, :id, :hero_name, {prompt: "Select a Hero"}, {:required => true}) %>
+            </div>
+         </div>
+         <div class="btn-toolbar p-2 mb-2 row justify-content-center">
+            <%= f.submit class: "btn btn-primary" %>
+         </div>
+         <% end %>
+      </div>
+      <div class="mb-3">
+         <%= link_to '[ Cancel and return to reports listing ]', reports_path, class: "text-info" %>
+      </div>
+   </div>
+</div>
