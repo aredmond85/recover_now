@@ -3,8 +3,10 @@ class Report < ApplicationRecord
    validates :description, presence: true, length: { minimum: 10, maximum: 300 }
 
    belongs_to :user
-   has_and_belongs_to_many :heros, :join_table => 'report_heros'
+   
+   has_many :report_heros
+   has_many :heros, through: :report_heros
 
-   belongs_to :user
-   has_and_belongs_to_many :villain, :join_table => 'report_villains'
+   has_many :report_villains
+   has_many :villains, through: :report_villains
 end

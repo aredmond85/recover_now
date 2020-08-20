@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :reports, dependent: :destroy
 
+  #OmniAuth
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
@@ -18,6 +19,5 @@ class User < ApplicationRecord
         )
     end
     user
-end
-
+  end
 end
