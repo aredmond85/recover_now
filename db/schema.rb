@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_220628) do
+ActiveRecord::Schema.define(version: 2020_08_20_214904) do
+
+  create_table "hero_bios", force: :cascade do |t|
+    t.text "hero_summary"
+    t.text "hero_powers"
+    t.integer "hero_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "heros", force: :cascade do |t|
     t.string "hero_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "hero_bio_id"
   end
 
   create_table "report_heros", force: :cascade do |t|
@@ -50,10 +59,19 @@ ActiveRecord::Schema.define(version: 2020_08_19_220628) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "villain_bios", force: :cascade do |t|
+    t.text "villain_summary"
+    t.text "villain_powers"
+    t.integer "villain_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "villains", force: :cascade do |t|
     t.string "villain_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "villain_bio_id"
   end
 
 end
