@@ -3,6 +3,7 @@ class HerosController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
+        byebug
         if params[:report_id]
             @report = Report.find_by(id: params[:report_id])
             if @report.nil?
@@ -67,7 +68,7 @@ class HerosController < ApplicationController
     def require_login
         unless user_signed_in?
             flash[:error] = "You must be logged in to access this section"
-            redirect_to root_path # halts request cycle
+            redirect_to root_path
         end
     end
 end

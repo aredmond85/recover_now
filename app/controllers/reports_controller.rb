@@ -51,7 +51,6 @@ class ReportsController < ApplicationController
     end
     
     def report_params
-        #byebug
         params.require(:report).permit(:subject, :description, :hero_ids, :villain_ids)
     end
 
