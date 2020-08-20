@@ -19,7 +19,7 @@
             <td><%= report.description %></td>
             <td><%= link_to report.user.email, report_path(report) %></td>
             <% report.heros.each do |hero|%>
-            <td><%= link_to hero.hero_name, report_heros_path(:hero_id, :report_id)  %></td>
+            <td><%= link_to hero.hero_name, report_hero_path(report.id, hero.id) %></td>
             <% end %>
             <% report.villains.each do |villain|%>
             <td><%= villain.villain_name %></td>
