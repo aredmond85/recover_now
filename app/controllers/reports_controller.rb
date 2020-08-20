@@ -15,7 +15,7 @@ class ReportsController < ApplicationController
     end
     
     def create
-        @report = current_user.reports.new(report_params)
+        @report = current_user.reports.build(report_params)
         if @report.save
             flash[:notice] = "Report was created successfully."
             redirect_to @report

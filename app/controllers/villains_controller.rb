@@ -15,7 +15,7 @@ class VillainsController < ApplicationController
     end
 
     def create
-        @villain = Villain.new(villain_params)
+        @villain = Villain.build(villain_params)
         if @villain.save
             flash[:notice] = "Villain was successfully created"
             redirect_to @villain
