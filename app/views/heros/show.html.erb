@@ -3,11 +3,14 @@
       <h1 class="row justify-content-center display-4"><%= @hero.hero_name %>  Dashboard</h1>
       <hr class="my-4">
       <p class="lead">
-      <div class="container row justify-content-center display-4">
-         <p><%= link_to "Edit Info", edit_hero_path(@hero), class: "btn btn-primary" %></p>
-      </div>
-      <div class="container row justify-content-center display-4">
-         <p><%= link_to "Bio", hero_bio_path(@hero), class: "btn btn-primary" %></p>
+      <div class="container justify-content-center display-4 btn-group" role="group">
+      <div class="btn-group btn-group" role="group">
+         <%= link_to "Edit Hero Name", edit_report_hero_path(@hero), class: "btn btn-info" %>
+         <%= link_to "Bio", hero_bio_path(@hero), class: "btn btn-info" %>
+         <%= link_to "Edit Bio", edit_hero_bio_path(@hero), class: "btn btn-info" %>
+         <%= link_to "Create a new hero", new_report_hero_path(@hero), class: "btn btn-info" %>
+         <%= link_to "Create a bio", new_hero_bio_path(@hero), class: "btn btn-info" %>
+         </div>
       </div>
    </div>
 </div>

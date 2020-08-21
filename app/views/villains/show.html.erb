@@ -1,13 +1,16 @@
 <div class="container" id="home-container">
    <div class="jumbotron">
-      <h1 class="row justify-content-center display-4"><%= @villain.villain_name %> Dashboard</h1>
+      <h1 class="row justify-content-center display-4"><%= @villain.villain_name %>  Dashboard</h1>
       <hr class="my-4">
       <p class="lead">
-      <div class="container row justify-content-center display-4">
-         <p><%= link_to "Edit Info", edit_villain_path(@villain), class: "btn btn-primary" %></p>
-      </div>
-      <div class="container row justify-content-center display-4">
-         <p><%= link_to "Bio", villain_bio_path(@villain), class: "btn btn-primary" %></p>
+      <div class="container justify-content-center display-4 btn-group" role="group">
+      <div class="btn-group btn-group" role="group">
+         <%= link_to "Edit Villain Name", edit_villain_path(@villain), class: "btn btn-info" %>
+         <%= link_to "Bio", villain_bio_path(@villain), class: "btn btn-info" %>
+         <%= link_to "Edit Bio", edit_villain_bio_path(@villain), class: "btn btn-info" %>
+         <%= link_to "Create a new villain", new_report_villain_path(@villain), class: "btn btn-info" %>
+         <%= link_to "Create a bio", new_villain_bio_path(@villain), class: "btn btn-info" %>
+         </div>
       </div>
    </div>
 </div>
