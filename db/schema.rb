@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_214904) do
+ActiveRecord::Schema.define(version: 2020_08_21_005602) do
 
   create_table "hero_bios", force: :cascade do |t|
     t.text "hero_summary"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_214904) do
     t.integer "user_id"
     t.integer "hero_id"
     t.integer "villain_id"
+    t.integer "hero_bio_id"
+    t.integer "villain_bio_id"
   end
 
   create_table "users", force: :cascade do |t|
