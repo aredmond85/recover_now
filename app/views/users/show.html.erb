@@ -1,17 +1,14 @@
-<div class="container">
-   <h1 class="row justify-content-center">Show User</h1>
-   <table class="table table-bordered bg-light">
-      <thead bgcolor="#959595">
-         <tr>
-            <th scope="col">Email</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><%= @user.email %></td>
-         </tr>
-      </tbody>
-   </table>
-   <%= link_to "Edit User", edit_user_path(@user), class: "btn btn-primary mr-4" %>
-   <%= link_to 'Reports', reports_path, class: "btn btn-outline-secondary mr-4" %>
+
+<div class="container" id="home-container">
+   <div class="jumbotron">
+      <h1 class="row justify-content-center display-4"><%= @user.email %> Dashboard</h1>
+      <hr class="my-4">
+      <p class="lead">
+      <div class="container row justify-content-center display-4">
+         <p><%= link_to "Edit Info", edit_user_path(@user), class: "btn btn-primary" %></p>
+      </div>
+      <div class="container row justify-content-center display-4">
+         <p><%= link_to 'Back to Reports', reports_path, class: "btn btn-primary" %></p>
+      </div>
+   </div>
 </div>

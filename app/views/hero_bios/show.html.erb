@@ -1,21 +1,15 @@
-<div class="container">
-   <h1 class="row justify-content-center">Show Hero Bio</h1>
-   <table class="table table-bordered bg-light">
-      <thead bgcolor="#959595">
-         <tr>
-            <th scope="col">Hero Summary</th>
-            <th scope="col">Hero Powers</th>
-            <th scope="col">Hero Name</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><%= @herobio.hero_summary %></td>
-            <td><%= @herobio.hero_powers %></td>
-            <td><%= @herobio.hero.hero_name %></td>
-         </tr>
-      </tbody>
-   </table>
-   <%= link_to "Edit Hero Bio", edit_hero_bio_path(@herobio), class: "btn btn-primary mr-4" %>
-   <%= link_to 'Reports', reports_path, class: "btn btn-outline-secondary mr-4" %>
+<div class="container" id="home-container">
+   <div class="jumbotron">
+      <h1 class="row justify-content-center display-4"><%= @herobio.hero.hero_name %> Bio</h1>
+      <hr class="my-4">
+      <p class="lead">
+      <div class="container">
+         <p><strong><%= @herobio.hero.hero_name %> Bio Summary</strong></p>
+         <p><%= @herobio.hero_summary %></p>
+      </div>
+      <div class="container">
+         <p><%= @herobio.hero.hero_name  %>  Powers</p>
+         <p><%= @herobio.hero_powers %></p>
+      </div>
+   </div>
 </div>

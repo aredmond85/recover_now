@@ -1,21 +1,19 @@
 <div class="container">
-   <h1 class="row justify-content-center">List of Villains</h1>
+   <h1 class="row justify-content-center">Villains</h1>
    <table class="table table-bordered bg-light">
       <thead bgcolor="#959595">
          <tr>
-            <th scope="col">Villain Name</th>
-            <th scope="col">Select</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            <th scope="col" class="text-center">Villain</th>
+            <th scope="col" class="text-center">Edit</th>
+            <th scope="col" class="text-center">Delete</th>
          </tr>
       </thead>
       <tbody>
          <% @villains.each do |villain|%>
          <tr>
-            <td><%= villain.villain_name %></td>
-            <td><%= link_to "Select villain", villain_path(villain) %></td>
-            <td><%= link_to "Edit villain", edit_villain_path(villain) %></td>
-            <td><%= link_to "Delete villain", villain_path(villain), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            <td class="text-center"><%= link_to villain.villain_name, villain_path(villain) %></td>
+            <td class="text-center"><%= link_to "Edit villain", edit_villain_path(villain) %></td>
+            <td class="text-center"><%= link_to "Delete villain", villain_path(villain), method: :delete, data: {confirm: "Are you sure?"} %></td>
          </tr>
          <% end %>
       </tbody>

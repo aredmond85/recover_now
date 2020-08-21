@@ -3,12 +3,8 @@ Rails.application.routes.draw do
               skip: [:mailer, :unlocks, :passwords, :confirmations]
 
   resources :reports do
-    resources :heros do
-      resources :hero_bios
-    end
-    resources :villains do
-      resources :villain_bios
-    end 
+    resources :heros 
+    resources :villains
   end
 
   resources :heros

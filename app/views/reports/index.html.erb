@@ -1,34 +1,32 @@
 <div class="container">
-   <h1 class="row justify-content-center">Report Index</h1>
+   <h1 class="row justify-content-center">Reports</h1>
    <table class="table table-bordered bg-light">
       <thead bgcolor="#959595">
          <tr>
-            <th scope="col">Ticket Number</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Description</th>
-            <th scope="col">Created By</th>
-            <th scope="col">Hero Involved</th>
-            <th scope="col">Villain Involved</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            <th scope="col" class="text-center">Ticket Number</th>
+            <th scope="col" class="text-center">Subject</th>
+            <th scope="col" class="text-center">Created By</th>
+            <th scope="col" class="text-center">Hero Involved</th>
+            <th scope="col" class="text-center">Villain Involved</th>
+            <th scope="col" class="text-center">Edit</th>
+            <th scope="col" class="text-center">Delete</th>
          </tr>
       </thead>
       <tbody>
          <% @reports.each do |report|%>
          <tr>
-            <td><%= link_to report.id, report_path(report) %></td>
+            <td class="text-center"><%= link_to report.id, report_path(report) %></td>
             <td><%= report.subject %></td>
-            <td><%= report.description %></td>
             <td><%= link_to report.user.email, report_path(report) %></td>
             <% report.heros.each do |hero|%>
-            <td><%= link_to hero.hero_name, report_hero_path(report.id, hero.id) %></td>
+            <td class="text-center"><%= link_to hero.hero_name, report_hero_path(report.id, hero.id) %></td>
             <% end %>
             <% report.villains.each do |villain|%>
-            <td><%= link_to villain.villain_name, report_villain_path(report.id, villain.id) %></td>
+            <td class="text-center"><%= link_to villain.villain_name, report_villain_path(report.id, villain.id) %></td>
             <% end %>
             <% if report.user == current_user %>
-            <td><%= link_to "Edit Report", edit_report_path(report) %></td>
-            <td><%= link_to "Delete Report", report_path(report), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            <td class="text-center"><%= link_to "Edit Report", edit_report_path(report) %></td>
+            <td class="text-center"><%= link_to "Delete Report", report_path(report), method: :delete, data: {confirm: "Are you sure?"} %></td>
             <% end %>
          </tr>
          <% end %>

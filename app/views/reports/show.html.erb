@@ -1,26 +1,22 @@
-<p>
-  <strong>Subject:</strong>
-  <%= @report.subject %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @report.description %>
-</p>
-
-<p>
-  <strong>Hero:</strong>
-  <% @report.heros.each do |h| %>
-  <%= h.hero_name %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Villain:</strong>
-  <% @report.villains.each do |v| %>
-  <%= v.villain_name %>
-  <% end %>
-</p>
-
-<%= link_to "Edit", edit_report_path(@report)%> |
-<%= link_to 'Back to Report Index', reports_path %> |
+<div class="container" id="home-container">
+   <div class="jumbotron">
+      <h1 class="row justify-content-center display-4"><%= @report.id %> - <%= @report.subject %></h1>
+      <hr class="my-4">
+      <p class="lead">
+      <div class="container">
+         <p><strong>Description: </strong></p>
+         <p><%= @report.description %></p>
+      </div>
+      <div class="container">
+        <% @report.heros.each do |h| %>
+         <p><strong>Hero Involved: </strong><%= h.hero_name %></p>
+        <% end %>
+      </div>
+      <div class="container">
+        <% @report.villains.each do |v| %>
+         <p><strong>Villain Involved: </strong><%= v.villain_name %></p>
+        <% end %>
+      </div>
+   </div>
+  <%= link_to "Edit", edit_report_path(@report), class: "btn btn-link" %> | <%= link_to 'Back to Report Index', reports_path, class: "btn btn-link"  %>
+</div>

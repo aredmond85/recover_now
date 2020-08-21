@@ -3,10 +3,7 @@
    <table class="table table-bordered bg-light">
       <thead bgcolor="#959595">
          <tr>
-            <th scope="col">Hero Summary</th>
-            <th scope="col">Hero Power</th>
-            <th scope="col">Hero Name</th>
-            <th scope="col">Select</th>
+            <th scope="col">Hero </th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
          </tr>
@@ -14,10 +11,7 @@
       <tbody>
          <% @herobios.each do |bio|%>
          <tr>
-            <td><%= bio.hero_summary %></td>
-            <td><%= bio.hero_powers %></td>
-            <td><%= bio.hero.hero_name %></td>
-            <td><%= link_to "Select Bio", hero_bio_path(bio) %></td>
+            <td><%= link_to bio.hero.hero_name, hero_bio_path(bio) %></td>
             <td><%= link_to "Edit Bio", edit_hero_bio_path(bio) %></td>
             <td><%= link_to "Delete Bio", hero_bio_path(bio), method: :delete, data: {confirm: "Are you sure?"} %></td>
          </tr>
