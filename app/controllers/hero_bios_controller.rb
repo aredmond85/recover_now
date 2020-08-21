@@ -7,7 +7,11 @@ class HeroBiosController < ApplicationController
     end
 
     def show
-        @herobio = HeroBio.find(params[:id])
+        if @herobio.nil?
+            redirect_to new_hero_bio_path, alert: "Hero Bio not found"
+        else
+            @herobio = HeroBio.find(params[:id])
+        end
     end
 
     def new

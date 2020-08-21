@@ -7,7 +7,11 @@ class VillainBiosController < ApplicationController
     end
 
     def show
-        @villainbio = VillainBio.find(params[:id])
+        if @villainbio.nil?
+            redirect_to new_villain_bio_path, alert: "Villain Bio not found"
+        else
+            @villainbio = VillainBio.find(params[:id])
+        end
     end
 
     def new
