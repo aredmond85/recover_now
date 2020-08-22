@@ -1,25 +1,52 @@
-# README
+# RecoverNow
+RecoverNow is a basic ticketing/reporting app in which users can submit reports or issues. It features an admin account and then you can upload and add new Heros and Villains and they will have their own bios attached to each report so the person can have a better understanding of who the Hero and Villain are.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
 
-Things you may want to cover:
+The setup steps expect the following tools to be installed on the system.
 
-* Ruby version
+- Github
+- Ruby 2.4.0
+- Rails 5.0.2
 
-* System dependencies
+## Install
+Clone the repository
+```
+git clone https://github.com/aredmond85/recover_now
+```
+cd recover_now
 
-* Configuration
+## Set up the Database
 
-* Database creation
+Run the following commands to create and setup the database: 
 
-* Database initialization
+```
+  bundle exec rake db:create
+  bundle exec rake db:setup
+```
+## Set up .env file 
 
-* How to run the test suite
+`bundle add dotenv` and `bundle install` 
 
-* Services (job queues, cache servers, search engines, etc.)
+Visit https://console.developers.google.com/apis/credentials to create your Client ID and Secret Key to add to the .env file.
 
-* Deployment instructions
+## Starting the Server
+You can start the rails server using the following command: 
+```
+  rails s
+```
 
-* ...
-# recover_now
+Visit the site at: http://localhost:3000
+
+## License 
+
+Distributed under the MIT License. See LICENSE for more information.
+
+## Contributing 
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+## Acknowledgements 
+
+- Flatiron School 
+- @aredmond85
