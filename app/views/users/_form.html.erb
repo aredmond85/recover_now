@@ -1,14 +1,6 @@
 <div class="container">
    <div class="row justify-content-center">
       <div class="col-5">
-         <% if @user.errors.any? %>
-         <h2>The following errors prevented the article from being saved</h2>
-         <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
-         </ul>
-         <% end %>
          <%= simple_form_for @user do |f| %>
          <%= f.input :email %>
          <%= f.input :password_digest %>

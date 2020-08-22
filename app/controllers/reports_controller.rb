@@ -1,13 +1,14 @@
 class ReportsController < ApplicationController
     before_action :require_login
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :set_report, only: [:show, :edit, :update, :destroy]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
     
     def index
         @reports = Report.all
     end
     
     def show
-        @report = Report.find(params[:id])
     end
     
     def new
@@ -25,7 +26,6 @@ class ReportsController < ApplicationController
     end
     
     def update
-        @report = Report.find(params[:id])
         if @report.update(report_params)
             flash[:notice] = "Report updated successfully"
             redirect_to @report
@@ -35,11 +35,9 @@ class ReportsController < ApplicationController
     end
     
     def edit
-        @report = Report.find(params[:id])
     end
     
     def destroy
-        @report = Report.find(params[:id])
         @report.destroy
         redirect_to reports_path
     end
@@ -58,6 +56,13 @@ class ReportsController < ApplicationController
         unless user_signed_in?
           flash[:error] = "You must be logged in to access this section"
           redirect_to root_path
+        end
+    end
+
+    def require_same_user
+        if current_user != @report.user && !current_user.admin?
+          flash[:alert] = "You can only edit or delete your own article"
+          redirect_to @report
         end
     end
 end

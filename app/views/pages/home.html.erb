@@ -4,14 +4,15 @@
       <hr class="my-4">
       <p class="lead">
       <div class="container justify-content-center btn-group" role="group">
-      <div class="btn-group btn-group" role="group">
+         <div class="btn-group btn-group" role="group">
             <% if !user_signed_in? %>
-                <%= link_to "Sign up", new_user_registration_path, class: "btn btn-warning" %>
-                <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %><br>
-                <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary" %>
+            <%= link_to "Sign up", new_user_registration_path, class: "btn btn-warning" %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %><br>
+            <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary" %>
             <% end %>
             <% if user_signed_in? %>
-                <%= link_to "Go to your reports", reports_path, class: "btn btn-primary btn-lg mr-4" %>
+            <%= link_to "Submit a Report", new_report_path, class: "btn btn-primary btn-lg mr-4" %>
+            <%= link_to "Go to reports", reports_path, class: "btn btn-primary btn-lg mr-4" %>
             <% end %>
          </div>
       </div>

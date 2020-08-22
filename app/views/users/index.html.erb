@@ -11,7 +11,7 @@
       <tbody>
          <% @users.each do |user|%>
          <tr>
-            <% if user == current_user %>
+            <% if user == current_user || current_user.admin? %>
             <td><%= user.email %></td>
             <td><%= link_to "Edit Your Account", edit_user_path(user) %></td>
             <td><%= link_to "Delete Your Account", user_path(user), method: :delete, data: {confirm: "Are you sure?"} %></td>
@@ -20,5 +20,4 @@
          <% end %>
       </tbody>
    </table>
-   <%= link_to 'New user', new_user_registration_path, class: "btn btn-primary" %>
 </div>

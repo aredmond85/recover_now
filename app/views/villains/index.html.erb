@@ -4,18 +4,20 @@
       <thead bgcolor="#959595">
          <tr>
             <th scope="col" class="text-center">Villain</th>
+            <% if current_user.admin? %>
             <th scope="col" class="text-center">Edit</th>
             <th scope="col" class="text-center">Delete</th>
+            <% end %>
          </tr>
       </thead>
       <tbody>
          <% @villains.each do |villain|%>
          <tr>
             <td class="text-center"><%= link_to villain.villain_name, villain_path(villain) %></td>
+         <% if current_user.admin? %>
             <td class="text-center"><%= link_to "Edit villain", edit_villain_path(villain) %></td>
-            <% if current_user.admin? %>
             <td class="text-center"><%= link_to "Delete villain", villain_path(villain), method: :delete, data: {confirm: "Are you sure?"} %></td>
-            <% end %>
+         <% end %>
          </tr>
          <% end %>
       </tbody>

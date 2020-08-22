@@ -5,34 +5,57 @@
    </button>
    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-       <% if user_signed_in? %>
-         <li class="nav-item active">
-            <%= link_to "Heroes", heros_path, class: "nav-link"%>
+         <% if user_signed_in? %>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Heroes & Villains
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <%= link_to "Heroes", heros_path, class: "dropdown-item"%>
+               <%= link_to "Villains", villains_path, class: "dropdown-item"%>
+            </div>
          </li>
-         <li class="nav-item active">
-            <%= link_to "Villains", villains_path, class: "nav-link"%>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Bios
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <%= link_to "Hero Bios", hero_bios_path, class: "dropdown-item"%>
+               <%= link_to "Villain Bios", villain_bios_path, class: "dropdown-item"%>
+            </div>
          </li>
-         <li class="nav-item">
-            <%= link_to "Villain Bios", villain_bios_path, class: "nav-link"%>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= "(Admin)" if current_user.admin? %> Profile
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
+               <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
+               <%= link_to "Edit user accounts", users_path, class: "dropdown-item" if current_user.admin? %>
+               <%= link_to "Delete profile", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?" } %> 
+            </div>
          </li>
-         <li class="nav-item">
-            <%= link_to "Hero Bios", hero_bios_path, class: "nav-link"%>
-         </li>
-         <li class="nav-item">
-            <%= link_to "Users", users_path, class: "nav-link"%> 
-         </li>
-         <li class="nav-item">
-            <%= link_to "Reports", reports_path, class: "nav-link"%>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reports
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <%= link_to "Submit a Report", new_report_path, class: "dropdown-item" %>
+               <%= link_to "Show Reports", reports_path, class: "dropdown-item" %>
+            </div>
          </li>
          <li class="nav-item">
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"%>
          </li>
-          <% end %>
+         <% else %>
+         <li class="nav-item">
+            <%= link_to 'Log in', new_user_session_path, class: "nav-link" %>
+         </li>
+         <li class="nav-item">
+            <%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %>
+         </li>
+         <% end %>
          </li>
       </ul>
-      <%# <form class="form-inline my-2 my-lg-0">
-         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-         </form> %>
    </div>
 </nav>

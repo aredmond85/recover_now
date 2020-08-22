@@ -12,6 +12,5 @@ Rails.application.routes.draw do
   resources :villain_bios
   resources :hero_bios
   resources :users, except: :new
-  get 'about', to: 'pages#about'
   root 'pages#home'
 end
