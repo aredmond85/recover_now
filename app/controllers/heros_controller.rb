@@ -1,31 +1,15 @@
 class HerosController < ApplicationController
     before_action :require_login
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :require_admin, only: [:destroy]
+    before_action :set_hero, only: [:show, :edit, :update, :destroy]
 
     def index
-        if params[:report_id]
-            @report = Report.find_by(id: params[:report_id])
-            if @report.nil?
-                redirect_to reports_path, alert: "Report not found"
-            else
-                @heros = @reports.heros
-            end
-        else
-            @heros = Hero.all
-        end
+        @heros = Hero.all
+        @heros = Hero.ordered_by_name
     end
 
     def show
-        if params[:report_id]
-            @report = Report.find_by(id: params[:report_id])
-            @hero = @report.heros.find_by(id: params[:id])
-                if @hero.nil?
-                    flash[:notice] = "Hero not found"
-                    redirect_to report_hero_path(@report)
-                end
-        else
-            @hero = Hero.find(params[:id])
-        end
     end
     
     def new
@@ -76,6 +60,13 @@ class HerosController < ApplicationController
         unless user_signed_in?
             flash[:error] = "You must be logged in to access this section"
             redirect_to root_path
+        end
+    end
+
+    def require_admin
+        if !(user_signed_in? && current_user.admin?)
+          flash[:alert] = "Only admins can perform that action"
+          redirect_to root_path
         end
     end
 end

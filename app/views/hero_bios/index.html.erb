@@ -13,10 +13,14 @@
          <tr>
             <td><%= link_to bio.hero.hero_name, hero_bio_path(bio) %></td>
             <td><%= link_to "Edit Bio", edit_hero_bio_path(bio) %></td>
+            <% if current_user.admin? %>
             <td><%= link_to "Delete Bio", hero_bio_path(bio), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            <% end %>
          </tr>
          <% end %>
       </tbody>
    </table>
+   <% if current_user.admin? %>
    <%= link_to 'New Hero Bio', new_hero_bio_path, class: "btn btn-primary" %>
+   <% end %>
 </div>

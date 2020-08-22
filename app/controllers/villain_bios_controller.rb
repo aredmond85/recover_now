@@ -1,17 +1,14 @@
 class VillainBiosController < ApplicationController
     before_action :require_login
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :require_admin, only: [:destroy]
+    before_action :set_villain_bio, only: [:show, :edit, :update, :destroy]
 
     def index
         @villainbios = VillainBio.all
     end
 
     def show
-        if @villainbio.nil?
-            redirect_to new_villain_bio_path, alert: "Villain Bio not found"
-        else
-            @villainbio = VillainBio.find(params[:id])
-        end
     end
 
     def new
@@ -29,7 +26,6 @@ class VillainBiosController < ApplicationController
     end
 
     def update
-        @villainbio = VillainBio.find(params[:id])
         if @villainbio.update(villain_bios_params)
             flash[:notice] = "Villain Bios name updated successfully"
             redirect_to @villainbio
@@ -39,18 +35,16 @@ class VillainBiosController < ApplicationController
     end
 
     def edit
-        @villainbio = VillainBio.find(params[:id])
     end
 
     def destroy
-        @villainbio = VillainBio.find(params[:id])
         @villainbio.destroy
         redirect_to villain_bios_path
     end
 
     private
 
-    def set_villain
+    def set_villain_bio
         @villainbio = VillainBio.find(params[:id])
     end
 
@@ -62,6 +56,13 @@ class VillainBiosController < ApplicationController
         unless user_signed_in?
             flash[:error] = "You must be logged in to access this section"
             redirect_to root_path # halts request cycle
+        end
+    end
+
+    def require_admin
+        if !(user_signed_in? && current_user.admin?)
+          flash[:alert] = "Only admins can perform that action"
+          redirect_to root_path
         end
     end
 end

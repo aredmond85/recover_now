@@ -1,0 +1,14 @@
+<div class="container">
+   <div class="row justify-content-center">
+      <div class="col-5">
+         <% if model.errors.any? %>
+         <h5>The following errors prevented the article from being saved</h5>
+         <ul>
+            <% model.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+         </ul>
+         <% end %>
+      </div>
+   </div>
+</div>

@@ -1,17 +1,14 @@
 class HeroBiosController < ApplicationController
     before_action :require_login
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :require_admin, only: [:destroy]
+    before_action :set_hero_bio, only: [:show, :edit, :update, :destroy]
 
     def index
         @herobios = HeroBio.all
     end
 
     def show
-        if @herobio.nil?
-            redirect_to new_hero_bio_path, alert: "Hero Bio not found"
-        else
-            @herobio = HeroBio.find(params[:id])
-        end
     end
 
     def new
@@ -29,9 +26,8 @@ class HeroBiosController < ApplicationController
     end
 
     def update
-        @herobio = HeroBio.find(params[:id])
         if @herobio.update(hero_bios_params)
-            flash[:notice] = "Hero Bios updated successfully"
+            flash[:notice] = "Hero Bios name updated successfully"
             redirect_to @herobio
         else
             render 'edit'
@@ -39,18 +35,16 @@ class HeroBiosController < ApplicationController
     end
 
     def edit
-        @herobio = HeroBio.find(params[:id])
     end
 
     def destroy
-        @herobio = HeroBio.find(params[:id])
         @herobio.destroy
         redirect_to hero_bios_path
     end
 
     private
 
-    def set_villain
+    def set_hero_bio
         @herobio = HeroBio.find(params[:id])
     end
 
@@ -62,6 +56,13 @@ class HeroBiosController < ApplicationController
         unless user_signed_in?
             flash[:error] = "You must be logged in to access this section"
             redirect_to root_path # halts request cycle
+        end
+    end
+
+    def require_admin
+        if !(user_signed_in? && current_user.admin?)
+          flash[:alert] = "Only admins can perform that action"
+          redirect_to root_path
         end
     end
 end

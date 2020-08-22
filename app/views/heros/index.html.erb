@@ -13,10 +13,14 @@
          <tr>
             <td class="text-center"><%= link_to hero.hero_name , hero_path(hero) %></td>
             <td class="text-center"><%= link_to "Edit hero", edit_hero_path(hero) %></td>
+            <% if current_user.admin? %>
             <td class="text-center"><%= link_to "Delete hero", hero_path(hero), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            <% end %>
          </tr>
          <% end %>
       </tbody>
    </table>
+   <% if current_user.admin? %>
    <%= link_to 'New hero', new_hero_path, class: "btn btn-primary" %>
+   <% end %>
 </div>

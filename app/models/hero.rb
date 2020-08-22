@@ -6,4 +6,6 @@ class Hero < ApplicationRecord
     has_many :reports, through: :report_heros, dependent: :destroy
 
     has_one :hero_bio
+
+    scope :ordered_by_name, -> { order(hero_name: :asc) }
 end

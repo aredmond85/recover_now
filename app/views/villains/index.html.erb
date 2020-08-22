@@ -13,10 +13,14 @@
          <tr>
             <td class="text-center"><%= link_to villain.villain_name, villain_path(villain) %></td>
             <td class="text-center"><%= link_to "Edit villain", edit_villain_path(villain) %></td>
+            <% if current_user.admin? %>
             <td class="text-center"><%= link_to "Delete villain", villain_path(villain), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            <% end %>
          </tr>
          <% end %>
       </tbody>
    </table>
+   <% if current_user.admin? %>
    <%= link_to 'New Villain', new_villain_path, class: "btn btn-primary" %>
+   <% end %>
 </div>

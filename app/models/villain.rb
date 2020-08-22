@@ -6,4 +6,6 @@ class Villain < ApplicationRecord
     has_many :reports, through: :report_villains
 
     has_one :villain_bio
+    
+    scope :ordered_by_name, -> { order(villain_name: :asc) }
 end 
