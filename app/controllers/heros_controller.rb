@@ -20,7 +20,7 @@ class HerosController < ApplicationController
         @hero = Hero.new(hero_params)
         if @hero.save
             flash[:notice] = "Hero was successfully created"
-            redirect_to @hero
+            redirect_to new_hero_bio_path
         else
             render 'new'
         end
