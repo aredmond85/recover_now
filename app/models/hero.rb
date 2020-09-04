@@ -8,4 +8,12 @@ class Hero < ApplicationRecord
     has_one :hero_bio
 
     scope :ordered_by_name, -> { order(hero_name: :asc) }
+
+    # def self.search(search)
+    #     if search
+    #        where(["hero_name LIKE ?", "%#{search}%"])
+    #     else
+    #        all
+    #     end
+    # end
 end

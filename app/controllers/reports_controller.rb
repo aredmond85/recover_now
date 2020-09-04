@@ -6,6 +6,7 @@ class ReportsController < ApplicationController
     
     def index
         @reports = Report.all
+        @reports = Report.search(params[:search])
     end
     
     def show
@@ -49,7 +50,7 @@ class ReportsController < ApplicationController
     end
     
     def report_params
-        params.require(:report).permit(:subject, :description, :hero_ids, :villain_ids)
+        params.require(:report).permit(:subject, :description, :hero_ids, :villain_ids, :search)
     end
 
     def require_login

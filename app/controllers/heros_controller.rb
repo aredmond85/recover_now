@@ -7,6 +7,7 @@ class HerosController < ApplicationController
     def index
         @heros = Hero.all
         @heros = Hero.ordered_by_name
+        @heros = Hero.search(params[:search])
     end
 
     def show
@@ -53,7 +54,7 @@ class HerosController < ApplicationController
     end
 
     def hero_params
-        params.require(:hero).permit(:hero_name)
+        params.require(:hero).permit(:hero_name, :search)
     end
 
     def require_login

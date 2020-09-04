@@ -32,5 +32,12 @@
          <% end %>
       </tbody>
    </table>
+
    <%= link_to 'New Report', new_report_path, class: "btn btn-primary" %>
+
+   <h3> Search for a Hero </h3>
+   <%= form_tag reports_path, :method => "get" do %>
+      <%= text_field_tag(:search, params[:search])%>
+      <%= submit_tag("Search", :name => nil) %>
+   <% end %>
 </div>
