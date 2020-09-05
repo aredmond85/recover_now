@@ -9,25 +9,13 @@ class Report < ApplicationRecord
 
    has_many :report_villains
    has_many :villains, through: :report_villains
-
-    # def self.search(search)
-    #     if search
-    #         hero = Hero.find_by(hero_name: search)
-    #             if hero
-    #                 self.where(hero_id: hero.id)
-    #             else
-    #                 Report.all
-    #             end
-    #     else
-    #         Report.all
-    #     end
-    # end
     
     def self.search(name)
-        name = name.to_s.strip
+        name = name.to_s.downcase.strip
         
         if name.present?
           reports = Report.joins(:heros).where(heros: { hero_name: name }).presence 
+          reports = Report.joins(:villains).where(villains: { villain_name: name }).presence 
         end
     
         reports ||= Report.all
