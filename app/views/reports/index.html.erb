@@ -1,5 +1,11 @@
 <div class="container">
    <h1 class="row justify-content-center">Reports</h1>
+   <h3> Search for a Hero related Reports</h3>
+   <%= form_tag reports_path, :method => "get" do %>
+      <%= text_field_tag(:search, params[:search])%>
+      <%= submit_tag("Search", :name => nil) %>
+   <% end %>
+
    <table class="table table-bordered bg-light">
       <thead bgcolor="#959595">
          <tr>
@@ -34,10 +40,4 @@
    </table>
 
    <%= link_to 'New Report', new_report_path, class: "btn btn-primary" %>
-
-   <h3> Search for a Hero </h3>
-   <%= form_tag reports_path, :method => "get" do %>
-      <%= text_field_tag(:search, params[:search])%>
-      <%= submit_tag("Search", :name => nil) %>
-   <% end %>
 </div>
