@@ -11,7 +11,7 @@ class Report < ApplicationRecord
    has_many :villains, through: :report_villains
     
     def self.search(name)
-        name = name.to_s.downcase.strip
+        name = name.to_s.strip
         
         if name.present?
           reports = Report.joins(:heros).where(heros: { hero_name: name }).presence 

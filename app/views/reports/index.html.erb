@@ -1,8 +1,8 @@
 <div class="container">
    <h1 class="row justify-content-center">Reports</h1>
-   <h3> Search for a Hero related Reports</h3>
+   <h3> Search for a Hero/Villain's reports</h3>
    <%= form_tag reports_path, :method => "get" do %>
-      <%= text_field_tag(:search, params[:search])%>
+      <%= text_field_tag(:search, params[:search], placeholder: "Enter a hero or villain...")%>
       <%= submit_tag("Search", :name => nil) %>
    <% end %>
 
